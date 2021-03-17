@@ -1,17 +1,19 @@
-const ansi = require('ansi')
+const color = require('colors')
+const qrcode = require('qrcode-terminal')
 
-
+color.enable();
 process.stdin.setEncoding('utf8');
-console.log('Enter text:');
+
+console.log(color.green('Enter text or link to generate QR-Code:'));
+
 process.stdin.on('readable', () => {
     const line = process.stdin.read();
-    const cursor = ansi(process.stdout)
-    cursor.beep().rgb(255,0,0).bold().bg.grey()
+
     if(!(line === null) && line !== '\n' && line !== '') 
     {
-        cursor.write(line);
+        qrcode.generate(line.replace('\n',''));
     }else{
-        cursor.write('Empty string')
+        console.log(color.red('Empty string'));
     }
-    cursor.beep().reset().bg.reset().write('\n')
+    
 });
