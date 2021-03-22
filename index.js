@@ -16,7 +16,6 @@ const coinArr = [
     }
 ];
 
-
 console.log('Введите 1 (Орел), 2 (Решка) или quit (выход):');
 
 rl.on('line', (cmd) => {
