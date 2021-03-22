@@ -1,0 +1,21 @@
+{
+  "name": "lessons-1",
+  "version": "1.0.0",
+  "description": "Lessons NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "stat": "node stat.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FenixGnom/geekbrains.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FenixGnom/geekbrains/issues"
+  },
+  "homepage": "https://github.com/FenixGnom/geekbrains#readme",
+  "dependencies": {}
+}
