@@ -1,19 +1,51 @@
-const color = require('colors')
-const qrcode = require('qrcode-terminal')
+const readline = require('readline');
+const fs = require('fs');
 
-color.enable();
-process.stdin.setEncoding('utf8');
-
-console.log(color.green('Enter text or link to generate QR-Code:'));
-
-process.stdin.on('readable', () => {
-    const line = process.stdin.read();
-
-    if(!(line === null) && line !== '\n' && line !== '') 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+const coinArr = [
     {
-        qrcode.generate(line.replace('\n',''));
-    }else{
-        console.log(color.red('Empty string'));
+        cmd: '1',
+        type: 'Орел'
+    }, 
+    {
+        cmd: '2',
+        type: 'Решка'
     }
-    
+];
+
+
+console.log('Введите 1 (Орел), 2 (Решка) или quit (выход):');
+
+rl.on('line', (cmd) => {
+    const rand = Math.floor(Math.random() * coinArr.length);
+
+
+    if (cmd === 'quit') {
+        rl.close();
+    } else {
+        let result;
+        
+        if ((cmd === '1') || (cmd === '2') || (cmd === 'quit')) {
+            console.log(`Вы выбрали: ${coinArr[cmd-1].type}, Противник выбрал: ${coinArr[rand].type}`);
+            if (cmd === coinArr[rand].cmd) {
+                console.log('Урааа! Вы выиграли!');
+                result = "Win\n";
+            } else {
+                console.log('Упс. Вы проиграли.');
+                result = "Loss\n";
+            }
+
+            fs.appendFile('log.txt', result, (err) => {
+                if (err) {
+                    throw err;
+                }
+            });
+        } else {
+            console.log('Вы ввели что то не то');
+        }
+        console.log('Введите 1 (Орел), 2 (Решка) или quit (выход):');
+    }
 });

@@ -4,7 +4,8 @@
   "description": "Lessons NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "stat": "node stat.js"
   },
   "repository": {
     "type": "git",
@@ -16,8 +17,5 @@
     "url": "https://github.com/FenixGnom/geekbrains/issues"
   },
   "homepage": "https://github.com/FenixGnom/geekbrains#readme",
-  "dependencies": {
-    "colors": "^1.4.0",
-    "qrcode-terminal": "^0.12.0"
-  }
+  "dependencies": {}
 }
