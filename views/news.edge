@@ -1,0 +1,31 @@
+@layout('_layout')
+
+
+@section('content')
+<div class="col-12">
+  <h2>Последние новости с Habrahabr</h2>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Название</th>
+        <th scope="col">Ссылка</th>
+      </tr>
+    </thead>
+    <tbody>
+        @each(item in news)
+            <tr>
+                <th scope="row">{{ ($loop.index + 1) }}</th>
+                <td>{{item.title}}</td>
+                <td>
+                    <a href="{{item.link}}" target="_blank">Читать подробнее</a>
+                </td>
+            </tr>
+        @endeach
+      
+    </tbody>
+  </table>
+
+
+@endsection
